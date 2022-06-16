@@ -118,7 +118,7 @@ def set_security_policy():
                   .allow_airplay(True)
                   .allow_av_adapter(True)) \
         .ncg(Ncg()
-             .allow_mobile_abnormal_device(False)
+             .allow_mobile_abnormal_device(True)
              .allow_external_display(True)
              .control_hdcp(0))
 
