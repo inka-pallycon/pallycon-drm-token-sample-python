@@ -50,6 +50,10 @@ class PallyConDrmTokenClient:
         self.__drm_type = "FairPlay"
         return self
 
+    def ncg(self):
+        self.__drm_type = "NCG"
+        return self
+
     def site_id(self, site_id):
         self.__site_id = site_id
         return self
