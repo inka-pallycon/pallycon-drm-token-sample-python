@@ -9,8 +9,9 @@ class SecurityPolicyWidevine:
         self.__widevine_disable_analog_output = None
         self.__widevine_hdcp_srm_rule = None
         self.__widevine_override_device_revocation = None
+        self.__widevine_enable_license_cipher = None
 
-    """ setter """
+""" setter """
 
     def security_level(self, security_level: int):
         from pallycon.config.widevine.security_level import check
@@ -37,7 +38,7 @@ class SecurityPolicyWidevine:
         return self
 
     def disable_analog_output(self, disable_analog_output: bool):
-        if isinstance(disable_analog_output, int):
+        if isinstance(disable_analog_output, bool):
             self.__widevine_disable_analog_output = disable_analog_output
         else:
             raise PallyConTokenException('1025')
@@ -52,10 +53,17 @@ class SecurityPolicyWidevine:
         return self
 
     def override_device_revocation(self, override_device_revocation: bool):
-        if isinstance(override_device_revocation, int):
+        if isinstance(override_device_revocation, bool):
             self.__widevine_override_device_revocation = override_device_revocation
         else:
             raise PallyConTokenException('1051')
+        return self
+
+    def enable_license_cipher(self, enable_license_cipher: bool):
+        if isinstance(enable_license_cipher, bool):
+            self.__widevine_enable_license_cipher = enable_license_cipher
+        else:
+            raise PallyConTokenException('1054')
         return self
 
     """ getter """
@@ -75,6 +83,9 @@ class SecurityPolicyWidevine:
     def get_hdcp_srm_rule(self) -> str:
         return self.__widevine_hdcp_srm_rule
 
+    def get_enable_license_cipher(self) -> bool:
+        return self.__widevine_enable_license_cipher
+
     def dict(self):
         widevine = {}
 
@@ -88,5 +99,7 @@ class SecurityPolicyWidevine:
             widevine['disable_analog_output'] = self.__widevine_disable_analog_output
         if self.__widevine_hdcp_srm_rule is not None:
             widevine['hdcp_srm_rule'] = self.__widevine_hdcp_srm_rule
+        if self.__widevine_enable_license_cipher is not None:
+            widevine['enable_license_cipher'] = self.__widevine_enable_license_cipher
 
         return widevine

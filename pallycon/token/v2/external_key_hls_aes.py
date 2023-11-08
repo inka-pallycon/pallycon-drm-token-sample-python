@@ -4,7 +4,7 @@ from pallycon.config.track_type import check
 
 
 class ExternalKeyHlsAes:
-    def __init__(self, track_type: hls_aes_track_type = '', key_id: str = '', key: str = ''):
+    def __init__(self, track_type: hls_aes_track_type = '', key_id: str = '', key: str = '', iv: str = ''):
 
         if isinstance(track_type, str) and check(track_type):
             self.__track_type = track_type
@@ -14,10 +14,15 @@ class ExternalKeyHlsAes:
         if isinstance(key_id, str) and _check_hex16(key_id):
             self.__key_id = key_id
         else:
-            raise PallyConTokenException('1044')
+            raise PallyConTokenException('1052')
 
         if isinstance(key, str) and _check_hex16(key):
             self.__key = key
+        else:
+            raise PallyConTokenException('1044')
+
+        if isinstance(iv, str) and _check_hex16(iv):
+            self.__iv = iv
         else:
             raise PallyConTokenException('1045')
 
@@ -32,12 +37,16 @@ class ExternalKeyHlsAes:
     @property
     def key(self) -> str:
         return self.__key
+    @property
+    def iv(self) -> str:
+        return self.__iv
 
     def dict(self):
         hls_aes = {
             'track_type': self.__track_type,
             'key_id': self.__key_id,
-            'key': self.__key
+            'key': self.__key,
+            'iv': self.__iv
         }
         return hls_aes
 

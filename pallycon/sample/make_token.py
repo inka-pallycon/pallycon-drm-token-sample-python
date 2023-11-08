@@ -134,7 +134,8 @@ def set_security_policy():
                   .security_level(security_level.SW_SECURE_CRYPTO)
                   .required_hdcp_version(required_hdcp_version.HDCP_NONE)
                   .required_cgms_flags(required_cgms_flags.CGMS_NONE)
-                  .override_device_revocation(False)) \
+                  .override_device_revocation(False)
+                  .enable_license_cipher(False) \
         .playready(Playready()
                    .security_level(p_security_level.LEVEL_150)
                    .digital_video_protection_level(digital_video_protection.LEVEL_100)
@@ -165,16 +166,20 @@ def set_external_key():
     hls_aes_list = [
         HlsAes(track_type.SD,
                '<key_id>',
-               '<key>'),
+               '<key>',
+               "<iv>"),
         HlsAes(track_type.HD,
                '<key_id>',
-               '<key>'),
+               '<key>',
+               "<iv>"),
         HlsAes(track_type.UHD1,
                '<key_id>',
-               '<key>'),
+               '<key>',
+               "<iv>"),
         HlsAes(track_type.UHD2,
                '<key_id>',
-               '<key>')
+               '<key>',
+               "<iv>"),
     ]
 
     external \

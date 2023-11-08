@@ -299,6 +299,9 @@ We hope this instruction would be helpful to generate DRM License Token to reque
 | 1049       | PlaybackPolicy : The rental_duration should be Integer |
 | 1050       | PlaybackPolicy : The playback_duration should be Integer |
 | 1051       | SecurityPolicyWidevine: The override_device_revocation should be Boolean |
+| 1052       | ExternalKeyHlsAes : The key_id should be 16byte hex String |
+| 1053       | PlaybackPolicy : The max_stream_per_user should be Integer |
+| 1054       | SecurityPolicyWidevine : The enable_license_cipher should be Boolean |
 
 
 

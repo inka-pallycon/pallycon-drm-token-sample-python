@@ -10,8 +10,9 @@ class PlaybackPolicy:
         self.__policy_allowed_track_types = None
         self.__policy_rental_duration = None
         self.__policy_playback_duration = None
+        self.__policy_max_stream_per_user = None
 
-    def persistent(self, persistent: bool):
+def persistent(self, persistent: bool):
         if isinstance(persistent, bool):
             self.__policy_persistent = persistent
         else:
@@ -54,6 +55,13 @@ class PlaybackPolicy:
             raise PallyConTokenException('1050')
         return self
 
+    def max_stream_per_user(self, max_stream_per_user: int):
+        if isinstance(max_stream_per_user, int) and not isinstance(max_stream_per_user, bool):
+            self.__policy_max_stream_per_user = max_stream_per_user
+        else:
+            raise PallyConTokenException('1053')
+        return self
+
     """ getter of persistent, license_duration, expire_date and allowed_track_types """
     def get_persistent(self) -> bool:
         return self.__policy_persistent
@@ -73,6 +81,8 @@ class PlaybackPolicy:
     def get_playback_duration(self) -> int:
         return self.__policy_playback_duration
 
+    def get_max_stream_per_user(self) -> int:
+        return self.__policy_max_stream_per_user
 
     def dict(self):
         playback_policy = {}
@@ -89,6 +99,8 @@ class PlaybackPolicy:
             playback_policy['rental_duration'] = self.__policy_rental_duration
         if self.__policy_playback_duration is not None:
             playback_policy['playback_duration'] = self.__policy_playback_duration
+        if self.__policy_max_stream_per_user is not None:
+            playback_policy['max_stream_per_user'] = self.__policy_max_stream_per_user
 
         return playback_policy
 
