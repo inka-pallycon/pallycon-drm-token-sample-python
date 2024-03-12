@@ -12,12 +12,12 @@ class PlaybackPolicy:
         self.__policy_playback_duration = None
         self.__policy_max_stream_per_user = None
 
-def persistent(self, persistent: bool):
-        if isinstance(persistent, bool):
-            self.__policy_persistent = persistent
-        else:
-            raise PallyConTokenException('1009')
-        return self
+    def persistent(self, persistent: bool):
+            if isinstance(persistent, bool):
+                self.__policy_persistent = persistent
+            else:
+                raise PallyConTokenException('1009')
+            return self
 
     def license_duration(self, license_duration: int):
         if isinstance(license_duration, int) and not isinstance(license_duration, bool):

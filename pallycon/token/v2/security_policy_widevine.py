@@ -11,7 +11,7 @@ class SecurityPolicyWidevine:
         self.__widevine_override_device_revocation = None
         self.__widevine_enable_license_cipher = None
 
-""" setter """
+    """ setter """
 
     def security_level(self, security_level: int):
         from pallycon.config.widevine.security_level import check

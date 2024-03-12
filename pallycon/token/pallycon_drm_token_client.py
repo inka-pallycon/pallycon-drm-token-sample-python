@@ -28,6 +28,7 @@ class PallyConDrmTokenClient:
         self.__policy = None
         self.__enc_policy = None
         self.__response_format = 'original'
+        self.__key_rotation = False
         self.__payload = None
 
     def site_key(self, site_key):
@@ -77,6 +78,13 @@ class PallyConDrmTokenClient:
             self.__response_format = response_format
         else:
             raise PallyConTokenException('1048')
+        return self
+
+    def key_rotation(self, key_rotation):
+        if isinstance(key_rotation, bool):
+            self.__key_rotation = key_rotation
+        else:
+            raise PallyConTokenException('1055')
         return self
 
     def __timestamp(self):
@@ -129,6 +137,7 @@ class PallyConDrmTokenClient:
             "cid": self.__cid,
             "policy": self.__enc_policy,
             "response_format": self.__response_format,
+            "key_rotation": self.__key_rotation,
             "timestamp": self.__timestamp,
             "hash": self.__hash,
         }

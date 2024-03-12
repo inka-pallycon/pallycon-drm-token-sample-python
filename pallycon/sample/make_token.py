@@ -51,7 +51,8 @@ def set_drm_token():
         .user_id("tester-user") \
         .cid("<Content ID>") \
         .policy(policy) \
-        .response_format(response_format.ORIGINAL)
+        .response_format(response_format.ORIGINAL) \
+        .key_rotation(False)
 
     logger.info(":::::: TOKEN ::::::\n" + token.execute())
     logger.debug(':::::: BEFORE ENCRYPT TOKEN ::::::' + token.to_json_str())
@@ -67,12 +68,12 @@ def set_policy():
     """
     set_playback_policy()
     set_security_policy()
-    set_external_key()
+    # set_external_key()
 
     policy \
         .playback(playback) \
         .security(security) \
-        .external(external)
+        # .external(external)
 
     logger.debug('policy set:\t' + policy.to_json_str())
 

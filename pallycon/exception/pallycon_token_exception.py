@@ -82,7 +82,7 @@ error_list = [
     ('1052', 'ExternalKeyHlsAes : The key_id should be 16byte hex String'),
     ('1053', 'PlaybackPolicy : The max_stream_per_user should be Integer'),
     ('1054', 'SecurityPolicyWidevine : The enable_license_cipher should be Boolean'),
-
+    ('1055', 'Token err : The key_rotation should be Boolean'),
 ]
 error_dict = dict(error_list)
 

@@ -84,7 +84,7 @@ and figure out which specification to use.
 
 ### How to get token
 
-0. make **quick** token : go to `pallycon/sample/amke_token.py` and run this module
+0. make **quick** token : go to `pallycon/sample/make_token.py` and run this module
 
 1. Before get token, you need to set up `policy`.
 
@@ -302,6 +302,7 @@ We hope this instruction would be helpful to generate DRM License Token to reque
 | 1052       | ExternalKeyHlsAes : The key_id should be 16byte hex String |
 | 1053       | PlaybackPolicy : The max_stream_per_user should be Integer |
 | 1054       | SecurityPolicyWidevine : The enable_license_cipher should be Boolean |
+| 1055       | Token err : The key_rotation should be Boolean |
 
 
 
